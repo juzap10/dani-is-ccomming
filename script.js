@@ -3,9 +3,14 @@ document.addEventListener('DOMContentLoaded', () =>
 )
 
 function updateTime() {
-  document.documentElement.style.setProperty('--timer-day', "'" + moment().format("dd") + "'");
-  document.documentElement.style.setProperty('--timer-hours', "'" + moment().format("k") + "'");
-  document.documentElement.style.setProperty('--timer-minutes', "'" + moment().format("mm") + "'");
-  document.documentElement.style.setProperty('--timer-seconds', "'" + moment().format("ss") + "'");
-  requestAnimationFrame(updateTime);
+    var eventTime= moment("2020-09-28 18:30").toDate().getTime();
+    var currentTime = moment().toDate().getTime();
+    var diffTime = eventTime - currentTime;
+    var duration = moment.duration(diffTime, 'milliseconds');
+
+    document.documentElement.style.setProperty('--timer-day', "'" + duration.days() + "'");
+    document.documentElement.style.setProperty('--timer-hours', "'" + duration.hours() + "'");
+    document.documentElement.style.setProperty('--timer-minutes', "'" + duration.minutes() + "'");
+    document.documentElement.style.setProperty('--timer-seconds', "'" + duration.seconds() + "'");
+    requestAnimationFrame(updateTime);
 }
