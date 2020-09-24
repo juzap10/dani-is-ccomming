@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () =>
 )
 
 function updateTime() {
-    var eventTime= moment("2020-09-28 18:30").toDate().getTime();
+    var eventTime= moment("2020-09-28 00:00").toDate().getTime();
     var currentTime = moment().toDate().getTime();
     var diffTime = eventTime - currentTime;
     var duration = moment.duration(diffTime, 'milliseconds');
